@@ -1,0 +1,59 @@
+# SHA256 (Inhalt ab Zeile 2, d.h. dieser Datei ohne diese erste Zeile): b7d1da4b86d3a111e357f27067c72cb2e46dcb41fafffdfd5ca6d7b5f4856df3
+rescan:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: health_center
+
+set_goal:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: health_center
+    profile:
+      required: true
+      example: person.thorsten
+      selector:
+        text:
+    goal:
+      required: true
+      example: steps
+      selector:
+        select:
+          translation_key: goal_key
+          options:
+            - steps
+            - floors
+            - active_energy
+            - exercise_minutes
+            - sleep_duration
+    value:
+      required: true
+      example: 10000
+      selector:
+        number:
+          min: 1
+          max: 1000000
+          mode: box
+
+assign_device:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: health_center
+    device:
+      required: true
+      example: 0123456789abcdef0123456789abcdef
+      selector:
+        text:
+    profile:
+      required: false
+      example: person.thorsten
+      selector:
+        text:

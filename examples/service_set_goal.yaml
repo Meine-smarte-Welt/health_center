@@ -1,0 +1,6 @@
+# SHA256 (Inhalt ab Zeile 2, d.h. dieser Datei ohne diese erste Zeile): 7b9c672ca10fe7a08a9e3e8f03da5aea0efdb84ae84015554786b8ad0c60ae65
+action: health_center.set_goal
+data:
+  profile: person.thorsten
+  goal: steps
+  value: 8000

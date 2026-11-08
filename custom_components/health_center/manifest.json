@@ -1,0 +1,16 @@
+{
+  "domain": "health_center",
+  "name": "Health Center",
+  "codeowners": ["@meine-smarte-welt"],
+  "config_flow": true,
+  "dependencies": ["http", "websocket_api"],
+  "after_dependencies": ["lovelace", "recorder", "person", "mobile_app"],
+  "documentation": "https://github.com/meine-smarte-welt/health_center",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/meine-smarte-welt/health_center/issues",
+  "loggers": ["custom_components.health_center"],
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.0.1"
+}

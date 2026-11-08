@@ -1,0 +1,94 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Health Center instellen",
+        "description": "Health Center herkent automatisch de gezondheidssensoren van de Home Assistant Companion-app (Android en iOS) en koppelt ze aan gebruikersprofielen. Voeg daarna de kaart “Health Center” toe aan je dashboard.",
+        "data": { "name": "Naam" }
+      },
+      "reconfigure": {
+        "title": "Health Center opnieuw configureren",
+        "data": { "name": "Naam" }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Health Center is al ingesteld.",
+      "reconfigure_successful": "De wijziging is opgeslagen."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Health Center – opties",
+        "description": "Geïnstalleerde versie: {version}. {update_info}",
+        "data": {
+          "show_all_profiles": "Alle profielen zichtbaar voor alle gebruikers",
+          "events_enabled": "Home Assistant-gebeurtenissen verzenden",
+          "history_days": "Geschiedenis importeren (dagen)",
+          "goal_steps": "Standaarddoel stappen",
+          "goal_sleep_hours": "Standaarddoel slaap (uren)",
+          "goal_exercise_minutes": "Standaarddoel actieve minuten",
+          "experimental_enabled": "Experimentele functies tonen",
+          "experimental_features": "Experimentele functies (afzonderlijk)"
+        },
+        "data_description": {
+          "show_all_profiles": "Uit: niet-beheerders zien in de kaart alleen hun eigen profiel. Let op: de sensoren van de Companion-app zelf blijven in Home Assistant voor iedereen zichtbaar.",
+          "history_days": "Zoveel dagen worden bij het starten uit de recorder overgenomen, voor zover beschikbaar.",
+          "experimental_enabled": "Experimentele functies zijn niet getest en standaard verborgen."
+        }
+      }
+    }
+  },
+  "selector": {
+    "experimental_features": {
+      "options": {
+        "extended_metrics": "Uitgebreide waarden (SpO₂, gewicht, bloeddruk …) en tabblad “Lichaam”",
+        "sleep_score": "Berekende slaapscore",
+        "profile_compare": "Profielvergelijking",
+        "trend_hints": "Trendhints"
+      }
+    },
+    "goal_key": {
+      "options": {
+        "steps": "Stappen",
+        "floors": "Verdiepingen",
+        "active_energy": "Actieve energie (kcal)",
+        "exercise_minutes": "Actieve minuten",
+        "sleep_duration": "Slaapduur (minuten)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "profiles": { "name": "Profielen" },
+      "detected_sensors": { "name": "Herkende sensoren" },
+      "goal_progress": { "name": "Dagdoel {profile}" }
+    }
+  },
+  "services": {
+    "rescan": {
+      "name": "Sensoren opnieuw zoeken",
+      "description": "Zoekt de gezondheidssensoren van de Companion-app en de profieltoewijzing opnieuw.",
+      "fields": { "entry_id": { "name": "Item", "description": "Optioneel, er is maar één item." } }
+    },
+    "set_goal": {
+      "name": "Doel instellen",
+      "description": "Stelt een dagdoel in voor een profiel.",
+      "fields": {
+        "entry_id": { "name": "Item", "description": "Optioneel, er is maar één item." },
+        "profile": { "name": "Profiel", "description": "Persoon-entiteit, profiel-ID of naam." },
+        "goal": { "name": "Doel", "description": "Welk doel wordt ingesteld." },
+        "value": { "name": "Waarde", "description": "Doelwaarde (slaapduur in minuten)." }
+      }
+    },
+    "assign_device": {
+      "name": "Apparaat toewijzen",
+      "description": "Wijst een Companion-app-apparaat toe aan een persoon. Leeg = automatisch, “ignore” = apparaat negeren.",
+      "fields": {
+        "entry_id": { "name": "Item", "description": "Optioneel, er is maar één item." },
+        "device": { "name": "Apparaat", "description": "Item-ID van de mobile_app (zie kaart, instellingen)." },
+        "profile": { "name": "Profiel", "description": "Persoon-entiteit, leeg = automatisch, “ignore” = negeren." }
+      }
+    }
+  }
+}

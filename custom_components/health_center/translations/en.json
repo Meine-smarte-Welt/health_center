@@ -1,0 +1,94 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Health Center",
+        "description": "Health Center automatically detects the health sensors of the Home Assistant Companion App (Android and iOS) and assigns them to user profiles. Add the “Health Center” card to your dashboard afterwards.",
+        "data": { "name": "Name" }
+      },
+      "reconfigure": {
+        "title": "Reconfigure Health Center",
+        "data": { "name": "Name" }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Health Center is already set up.",
+      "reconfigure_successful": "The change has been saved."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Health Center – options",
+        "description": "Installed version: {version}. {update_info}",
+        "data": {
+          "show_all_profiles": "Show all profiles to all users",
+          "events_enabled": "Send Home Assistant events",
+          "history_days": "Import history (days)",
+          "goal_steps": "Default goal: steps",
+          "goal_sleep_hours": "Default goal: sleep (hours)",
+          "goal_exercise_minutes": "Default goal: active minutes",
+          "experimental_enabled": "Show experimental features",
+          "experimental_features": "Experimental features (individually)"
+        },
+        "data_description": {
+          "show_all_profiles": "Off: non-administrators only see their own profile in the card. Note: the Companion App sensors themselves stay visible to everyone in Home Assistant.",
+          "history_days": "This many days are imported from the recorder at startup, where available.",
+          "experimental_enabled": "Experimental features are untested and hidden by default."
+        }
+      }
+    }
+  },
+  "selector": {
+    "experimental_features": {
+      "options": {
+        "extended_metrics": "Extended values (SpO₂, weight, blood pressure …) and “Body” tab",
+        "sleep_score": "Calculated sleep score",
+        "profile_compare": "Profile comparison",
+        "trend_hints": "Trend hints"
+      }
+    },
+    "goal_key": {
+      "options": {
+        "steps": "Steps",
+        "floors": "Floors",
+        "active_energy": "Active energy (kcal)",
+        "exercise_minutes": "Active minutes",
+        "sleep_duration": "Sleep duration (minutes)"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "profiles": { "name": "Profiles" },
+      "detected_sensors": { "name": "Detected sensors" },
+      "goal_progress": { "name": "Daily goal {profile}" }
+    }
+  },
+  "services": {
+    "rescan": {
+      "name": "Rescan sensors",
+      "description": "Searches the Companion App health sensors and the profile assignment again.",
+      "fields": { "entry_id": { "name": "Entry", "description": "Optional, there is only one entry." } }
+    },
+    "set_goal": {
+      "name": "Set goal",
+      "description": "Sets a daily goal for a profile.",
+      "fields": {
+        "entry_id": { "name": "Entry", "description": "Optional, there is only one entry." },
+        "profile": { "name": "Profile", "description": "Person entity, profile ID or name." },
+        "goal": { "name": "Goal", "description": "Which goal to set." },
+        "value": { "name": "Value", "description": "Target value (sleep duration in minutes)." }
+      }
+    },
+    "assign_device": {
+      "name": "Assign device",
+      "description": "Assigns a Companion App device to a person. Empty = automatic, “ignore” = ignore the device.",
+      "fields": {
+        "entry_id": { "name": "Entry", "description": "Optional, there is only one entry." },
+        "device": { "name": "Device", "description": "Entry ID of the mobile_app (see card, settings)." },
+        "profile": { "name": "Profile", "description": "Person entity, empty = automatic, “ignore” = ignore." }
+      }
+    }
+  }
+}

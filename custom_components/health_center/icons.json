@@ -1,0 +1,14 @@
+{
+  "entity": {
+    "sensor": {
+      "profiles": { "default": "mdi:account-heart" },
+      "detected_sensors": { "default": "mdi:heart-pulse" },
+      "goal_progress": { "default": "mdi:flag-checkered" }
+    }
+  },
+  "services": {
+    "rescan": { "service": "mdi:magnify-scan" },
+    "set_goal": { "service": "mdi:target" },
+    "assign_device": { "service": "mdi:cellphone-link" }
+  }
+}

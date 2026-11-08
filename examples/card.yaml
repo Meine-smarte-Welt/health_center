@@ -1,0 +1,6 @@
+# SHA256 (Inhalt ab Zeile 2, d.h. dieser Datei ohne diese erste Zeile): 55d21ddb4d954c33305f7b3ce3bd4ed54aab634be994aa14bae3bca983190dac
+type: custom:health-center-card
+title: Health Center
+default_tab: overview
+show_body: false
+zoom: 1
